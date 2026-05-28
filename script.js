@@ -1,4 +1,6 @@
-// --- LÓGICA DO MENU LATERAL ---
+// ==========================================================================
+// --- 1. LÓGICA DO MENU LATERAL (HAMBÚRGUER) ---
+// ==========================================================================
 const menuBtn = document.getElementById('menuBtn');
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
@@ -18,7 +20,9 @@ menuLinks.forEach(link => {
 });
 
 
-// --- LÓGICA DO CARROSSEL (AUTOMÁTICO + ARRASTAR) ---
+// ==========================================================================
+// --- 2. LÓGICA DO CARROSSEL (AUTOMÁTICO + ARRASTAR MOBILE) ---
+// ==========================================================================
 const track = document.getElementById('track');
 const dots = document.querySelectorAll('.dot');
 const container = document.querySelector('.carousel-container');
@@ -64,8 +68,13 @@ function resetInterval() {
     autoSlide = setInterval(nextSlide, slideInterval);
 }
 
-// Funções de Arrastar (Swipe)
+// Funções de Arrastar (Swipe) corrigidas para não bloquear cliques externos
 function dragStart(e) {
+    // Se o toque acontecer no botão flutuante do WhatsApp, ignora o arrasto do carrossel
+    if (e.target.closest('.whatsapp-flutuante')) {
+        return;
+    }
+    
     isDragging = true;
     startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
     clearInterval(autoSlide); // Pausa o tempo enquanto arrasta
@@ -78,6 +87,7 @@ function dragEnd(e) {
     const endX = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].clientX;
     const diffX = startX - endX;
 
+    // Só passa o slide se o arrasto for maior que 50 pixels (evita cliques fantasmas)
     if (diffX > 50) {
         nextSlide();
     } else if (diffX < -50) {
@@ -87,14 +97,17 @@ function dragEnd(e) {
     resetInterval(); // Retoma o carrossel automático
 }
 
-// Eventos de toque e mouse
+// Eventos de toque e mouse para o carrossel
 container.addEventListener('touchstart', dragStart, { passive: true });
 container.addEventListener('touchend', dragEnd, { passive: true });
 container.addEventListener('mousedown', dragStart);
 container.addEventListener('mouseup', dragEnd);
 container.addEventListener('mouseleave', () => { isDragging = false; });
 
-// --- ARRASTAR SLIDER DE SERVIÇOS COM O MOUSE (PC) ---
+
+// ==========================================================================
+// --- 3. ARRASTAR SLIDER DE SERVIÇOS COM O MOUSE (PC) ---
+// ==========================================================================
 const sliders = document.querySelectorAll('.services-slider');
 
 sliders.forEach(slider => {
@@ -103,6 +116,9 @@ sliders.forEach(slider => {
     let scrollLeft;
 
     slider.addEventListener('mousedown', (e) => {
+        // Ignora o arrasto do slider se o clique for direto no botão de agendar
+        if (e.target.closest('.book-btn')) return;
+        
         isDown = true;
         slider.style.cursor = 'grabbing';
         startX = e.pageX - slider.offsetLeft;
