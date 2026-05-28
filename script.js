@@ -18,14 +18,14 @@ menuLinks.forEach(link => {
 });
 
 
-// --- LÓGICA DO CARROSSEL (AUTOMÁTICO + ARRASTAR CORRIGIDO) ---
+// --- LÓGICA DO CARROSSEL (AUTOMÁTICO + ARRASTAR) ---
 const track = document.getElementById('track');
 const dots = document.querySelectorAll('.dot');
 const container = document.querySelector('.carousel-container');
 
 let currentIndex = 0;
 const totalSlides = 3;
-const slideInterval = 5000; 
+const slideInterval = 5000; // 5 segundos
 let autoSlide = setInterval(nextSlide, slideInterval);
 
 let startX = 0;
@@ -64,15 +64,11 @@ function resetInterval() {
     autoSlide = setInterval(nextSlide, slideInterval);
 }
 
-// CORREÇÃO DO TOQUE: Libera o clique se for em links, botões ou imagens de botões
+// Funções de Arrastar (Swipe)
 function dragStart(e) {
-    // Se o clique/toque for no botão do WhatsApp ou qualquer link/botão, não interfere
-    if (e.target.closest('.whatsapp-flutuante') || e.target.closest('a') || e.target.closest('button')) {
-        return; 
-    }
     isDragging = true;
     startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-    clearInterval(autoSlide);
+    clearInterval(autoSlide); // Pausa o tempo enquanto arrasta
 }
 
 function dragEnd(e) {
@@ -88,16 +84,15 @@ function dragEnd(e) {
         prevSlide();
     }
     
-    resetInterval();
+    resetInterval(); // Retoma o carrossel automático
 }
 
-// Eventos do Carrossel
+// Eventos de toque e mouse
 container.addEventListener('touchstart', dragStart, { passive: true });
 container.addEventListener('touchend', dragEnd, { passive: true });
 container.addEventListener('mousedown', dragStart);
 container.addEventListener('mouseup', dragEnd);
 container.addEventListener('mouseleave', () => { isDragging = false; });
-
 
 // --- ARRASTAR SLIDER DE SERVIÇOS COM O MOUSE (PC) ---
 const sliders = document.querySelectorAll('.services-slider');
@@ -108,9 +103,6 @@ sliders.forEach(slider => {
     let scrollLeft;
 
     slider.addEventListener('mousedown', (e) => {
-        // Ignora o arrasto se clicar direto no botão de agendar
-        if (e.target.closest('.book-btn')) return;
-        
         isDown = true;
         slider.style.cursor = 'grabbing';
         startX = e.pageX - slider.offsetLeft;
@@ -131,7 +123,7 @@ sliders.forEach(slider => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 2; 
+        const walk = (x - startX) * 2; // Multiplicador de velocidade de arrasto
         slider.scrollLeft = scrollLeft - walk;
     });
 });
