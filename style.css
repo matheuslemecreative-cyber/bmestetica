@@ -54,15 +54,9 @@ header {
     transition: all 0.3s ease;
 }
 
-.menu-btn.open span:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
-}
-.menu-btn.open span:nth-child(2) {
-    opacity: 0;
-}
-.menu-btn.open span:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
-}
+.menu-btn.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; }
+.menu-btn.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
 
 /* --- MENU LATERAL (SIDEBAR) --- */
 .sidebar {
@@ -98,7 +92,7 @@ header {
     font-size: 1.4rem;
     letter-spacing: 1px;
     transition: background 0.3s, color 0.3s;
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .sidebar ul li a:hover {
@@ -161,7 +155,6 @@ header {
     object-position: center;
 }
 
-/* Indicadores (Bolinhas) - Fora do media query para funcionar globalmente */
 .carousel-indicators {
     position: absolute;
     bottom: 20px;
@@ -186,7 +179,7 @@ header {
     transform: scale(1.2);
 }
 
-/* --- ADAPTAÇÃO COMPLETA PARA CELULAR (TELAS ATÉ 1000PX) --- */
+/* --- ADAPTAÇÃO COMPLETA PARA CELULAR --- */
 @media (max-width: 1000px) {
     .carousel-container {
         width: 100%; 
@@ -194,74 +187,56 @@ header {
         aspect-ratio: 1000 / 1100; 
         margin: 20px 0 0 0; 
         border-radius: 0px; 
-		
     }
-	
+    
     .slide {
-        width: 100%; /* Mudado de 100vw para 100% para evitar quebra de largura */
+        width: 100%;
         height: auto;
         aspect-ratio: 1000 / 1100;
     }
 }
 
-/* ==========================================================================
-   --- SEÇÃO DE SERVIÇOS (VERSÃO CORRIGIDA E UNIFICADA) ---
-   ========================================================================== */
-
+/* --- SEÇÃO DE SERVIÇOS --- */
 .services-section {
     max-width: 1000px;
-    margin: 0 auto; /* Centraliza a seção inteira no PC */
+    margin: 0 auto;
     padding: 0;
 }
 
-/* Caixa que segura cada grupo (Mais Agendados / Todos os Serviços) */
 .services-group {
     width: 100%;
-    margin-top: 50px;    /* Espaço idêntico acima de CADA bloco */
-    margin-bottom: 20px; /* Espaço abaixo de cada bloco */
+    margin-top: 50px;
+    margin-bottom: 20px;
     padding: 0;
+} /* CORRIGIDO: Chave de fechamento que estava faltando bem aqui! */
 
-/* Título com a barrinha dourada */
 .section-title {
     font-size: 1.8rem;
     color: #4a3e3d;
     margin-top: 0;
     margin-bottom: 20px;
-    margin-left: 20px; /* Alinha perfeitamente com o início dos cards no PC */
+    margin-left: 20px;
     letter-spacing: 1px;
-    border-left: 4px solid #b48f48; /* Barrinha dourada */
-    padding-left: 12px; /* Afasta o texto da barrinha */
+    border-left: 4px solid #b48f48;
+    padding-left: 12px;
 }
 
-/* Área rolável lateralmente */
 .services-slider {
     display: flex;
     gap: 20px;
     overflow-x: auto;
-    padding-left: 20px;  /* Faz o primeiro card alinhar com o título */
-    padding-right: 20px; /* Dá respiro no final da rolagem */
+    padding-left: 20px;
+    padding-right: 20px;
     padding-bottom: 20px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
 
-/* Esconde/Suaviza a barra de rolagem */
-.services-slider::-webkit-scrollbar {
-    height: 6px;
-}
-.services-slider::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-.services-slider::-webkit-scrollbar-thumb {
-    background: #e9e5d9;
-    border-radius: 10px;
-}
-.services-slider::-webkit-scrollbar-thumb:hover {
-    background: #b48f48;
-}
+.services-slider::-webkit-scrollbar { height: 6px; }
+.services-slider::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+.services-slider::-webkit-scrollbar-thumb { background: #e9e5d9; border-radius: 10px; }
+.services-slider::-webkit-scrollbar-thumb:hover { background: #b48f48; }
 
-/* CARD RETANGULAR VERTICAL */
 .service-card {
     flex: 0 0 280px; 
     background-color: #ffffff;
@@ -274,54 +249,14 @@ header {
     transition: transform 0.3s ease;
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-}
+.service-card:hover { transform: translateY(-5px); }
+.service-img { width: 100%; height: 200px; object-fit: cover; }
+.service-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+.service-content h3 { font-size: 1.6rem; color: #4a3e3d; margin-bottom: 8px; min-height: 44px; }
+.service-price { font-size: 1.75rem; color: #b08532; font-weight: bold; margin-bottom: 12px; }
+.service-description { font-size: 1.15rem; color: #7a6e6d; line-height: 1.4; margin-bottom: 1px; flex-grow: 1; }
+.service-duration { font-size: 1.15rem; color: #a19492; margin-bottom: 15px; margin-top: 10px; font-weight: bold; }
 
-.service-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.service-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.service-content h3 {
-    font-size: 1.6rem;
-    color: #4a3e3d;
-    margin-bottom: 8px;
-    min-height: 44px;
-}
-
-.service-price {
-    font-size: 1.75rem;
-    color: #b08532; 
-    font-weight: bold;
-    margin-bottom: 12px;
-}
-
-.service-description {
-    font-size: 1.15rem;
-    color: #7a6e6d;
-    line-height: 1.4;
-    margin-bottom: 1px;
-    flex-grow: 1;
-}
-
-.service-duration {
-    font-size: 1.15rem;
-    color: #a19492;
-    margin-bottom: 15px;
-	margin-top: 10px;
-	font-weight: bold;
-}
-
-/* BOTÃO AGENDE AGORA */
 .book-btn {
     display: block;
     text-align: center;
@@ -336,81 +271,45 @@ header {
     transition: background-color 0.3s ease;
 }
 
-.book-btn:hover {
-    background-color: #b08532;
-}
-
-/* --- ADAPTAÇÃO COMPLETA PARA CELULAR --- */
 @media (max-width: 1000px) {
-    .services-section {
-        margin-top: 20px;
-    }
-
-    .services-group {
-        margin-top: 30px;
-        margin-bottom: 10px;
-    }
+    .services-section { margin-top: 20px; }
+    .services-group { margin-top: 30px; margin-bottom: 10px; }
+    .section-title { font-size: 2.25rem; margin-left: 15px; }
+    .services-slider { padding-left: 15px; padding-right: 15px; }
+    .service-card { flex: 0 0 250px; }
     
-    .section-title {
-        font-size: 2.25rem; 
-        margin-left: 15px; /* Recuo menor adaptado para a tela do celular */
-    }
-
-    .services-slider {
-        padding-left: 15px; /* Alinha o primeiro card com a nova margem do título */
-        padding-right: 15px;
-    }
-    
-    .service-card {
-        flex: 0 0 250px; /* Cards ligeiramente menores no mobile */
-    }
-
-    /* Regras do Carrossel superior mantidas */
     .carousel-container {
-        width: 100%; 
-        height: auto; 
-        aspect-ratio: 1000 / 1100; 
-        margin: 20px 0 0 0; 
-        border-radius: 0px; 
+        width: 100%; height: auto; aspect-ratio: 1000 / 1100; margin: 20px 0 0 0; border-radius: 0px; 
     }
-
-    .slide {
-        width: 100%; 
-        height: auto;
-        aspect-ratio: 1000 / 1100;
-    }
+    .slide { width: 100%; height: auto; aspect-ratio: 1000 / 1100; }
 }
-/* --- BOTÃO FLUTUANTE DO WHATSAPP --- */
+
+/* --- BOTÃO FLUTUANTE DO WHATSAPP (TOTALMENTE ISOLADO) --- */
 .whatsapp-flutuante {
     position: fixed;
     width: 60px;
     height: 60px;
     bottom: 20px;
     right: 20px;
-    z-index: 999; /* Garante que ele fique por cima de tudo */
-    transition: transform 0.3s ease;
+    z-index: 9999 !important; /* Garante clique absoluto acima de qualquer elemento */
+    display: block;
 }
 
-/* Controla a imagem dentro do botão */
 .whatsapp-flutuante img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: 50%; /* Mantém redondo se a imagem for quadrada */
+    border-radius: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-	background-color: #03e251;
+    background-color: #03e251;
 }
 
-/* Efeito de aumentar levemente ao passar o mouse */
-.whatsapp-flutuante:hover {
-    transform: scale(1.1);
-}
+.whatsapp-flutuante:hover { transform: scale(1.1); }
 
-/* Ajuste para telas menores (celulares) */
 @media (max-width: 600px) {
     .whatsapp-flutuante {
-        width: 70px;
-        height: 70px;
+        width: 60px; /* Mantido em 60px para não estourar a proporção em telas pequenas */
+        height: 60px;
         bottom: 15px;
         right: 15px;
     }
