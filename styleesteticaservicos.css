@@ -1,0 +1,300 @@
+/* --- ESTILOS GERAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-color: #fcf9f6; 
+    color: #4a3e3d; 
+    overflow-x: hidden;
+}
+
+/* --- CABEÇALHO --- */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 85px;
+    background-color: #e9e5d9;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 0 20px;
+    z-index: 100;
+}
+
+.logo img {
+    max-height: 70px;
+    width: auto;
+}
+
+/* Botão Hambúrguer */
+.menu-btn {
+    position: absolute;
+    left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    z-index: 102;
+}
+
+.menu-btn span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #b48f48; 
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-btn.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; }
+.menu-btn.open span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+/* --- MENU LATERAL (SIDEBAR) --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #e9e5d9;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    transition: left 0.4s ease;
+    z-index: 101;
+    padding-top: 110px;
+}
+
+.sidebar.active { left: 0; }
+.sidebar ul { list-style: none; }
+.sidebar ul li { border-bottom: 1px solid #f5ebe6; }
+.sidebar ul li a {
+    display: block;
+    padding: 18px 25px;
+    color: #b08532;
+    text-decoration: none;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    transition: background 0.3s, color 0.3s;
+    font-weight: bold;
+}
+.sidebar ul li a:hover {
+    background-color: #fbf5f0;
+    color: #4a3e3d;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 99;
+}
+.overlay.active { opacity: 1; visibility: visible; }
+
+/* --- CONTAINER DA PÁGINA DE SERVIÇOS --- */
+.services-page-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 0;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #4a3e3d;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    letter-spacing: 1px;
+    border-left: 4px solid #b48f48;
+    padding-left: 12px;
+}
+
+/* Bloco que envolve cada linha separada */
+.services-group {
+    width: 100%;
+    margin-bottom: 35px; 
+}
+
+/* Área rolável de cada linha */
+.services-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+}
+
+.services-slider:active {
+    cursor: grabbing;
+}
+
+/* Estilização básica da barra de rolagem horizontal */
+.services-slider::-webkit-scrollbar {
+    height: 6px;
+}
+.services-slider::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.services-slider::-webkit-scrollbar-thumb {
+    background: #e9e5d9;
+    border-radius: 10px;
+}
+.services-slider::-webkit-scrollbar-thumb:hover {
+    background: #b48f48;
+}
+
+/* CARD INDIVIDUAL DE SERVIÇO */
+.service-card {
+    flex: 0 0 300px; /* Largura fixa para permitir o arrasto horizontal */
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f5ebe6;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.service-content h3 {
+    font-size: 1.4rem;
+    color: #4a3e3d;
+    margin-bottom: 8px;
+    min-height: 44px;
+}
+
+.service-price {
+    font-size: 1.6rem;
+    color: #b08532; 
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.service-description {
+    font-size: 1.05rem;
+    color: #7a6e6d;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+.service-duration {
+    font-size: 1.05rem;
+    color: #a19492;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* BOTÃO AGENDE AGORA */
+.book-btn {
+    display: block;
+    text-align: center;
+    background-color: #b08532;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+    background-color: #916c24;
+}
+
+/* --- ADAPTAÇÃO PARA CELULAR (MOBILE) --- */
+@media (max-width: 1000px) {
+    .services-page-container {
+        margin: 30px auto;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin-left: 15px;
+    }
+
+    .services-group {
+        margin-bottom: 20px;
+    }
+
+    .services-slider {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .service-card {
+        flex: 0 0 260px; /* Cards ligeiramente menores nas telas pequenas */
+    }
+}
+/* --- BOTÃO FLUTUANTE DO WHATSAPP --- */
+.whatsapp-flutuante {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999; /* Garante que ele fique por cima de tudo */
+    transition: transform 0.3s ease;
+}
+
+/* Controla a imagem dentro do botão */
+.whatsapp-flutuante img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%; /* Mantém redondo se a imagem for quadrada */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+	background-color: #03e251;
+}
+
+/* Efeito de aumentar levemente ao passar o mouse */
+.whatsapp-flutuante:hover {
+    transform: scale(1.1);
+}
+
+/* Ajuste para telas menores (celulares) */
+@media (max-width: 600px) {
+    .whatsapp-flutuante {
+        width: 70px;
+        height: 70px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
