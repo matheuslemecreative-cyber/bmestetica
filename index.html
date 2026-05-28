@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BM|Estética & Spa</title>
+	<link rel="icon" href="../img/faviconbm.jpg" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <button class="menu-btn" id="menuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <div class="logo">
+<img src="bmlogo.png" alt="Logo Estética e Spa">
+        </div>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="#servicos">Nossos Serviços</a></li>
+			<li><a href="#pacotes">Nossos Pacotes</a></li>
+			<li><a href="#combocasal">Combo Casal</a></li>
+			<li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#avaliacoes">Avaliações</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+            <li><a href="#https://wa.me/5516997094208?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20realizar%20um%20agendamento.">Fale Conosco</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="carousel-container">
+            <div class="carousel-track" id="track">
+                <div class="slide">
+                    <img src="bannerbm1.jpg" alt="Massoterapia">
+                </div>
+                <div class="slide">
+                    <img src="bannerbm2.jpg" alt="Estética Facial">
+                </div>
+                <div class="slide">
+                    <img src="bannerbm3.jpg" alt="Tratamentos Corporais">
+                </div>
+            </div>
+			
+			
+
+            <div class="carousel-indicators">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+            </div>
+        </div>
+    </main>
+	
+	        <div class="services-group">
+            <h2 class="section-title">Todos os Serviços</h2>
+            <div class="services-slider">
+                
+                <div class="service-card">
+                    <img src="relaxante.jpg" alt="Massagem Relaxante" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Massagem Relaxante</h3>
+                        <p class="service-price">R$ 130</p>
+                        <p class="service-description"><b>Somente para mulheres</b>: 40min de massagem +10min de ventosa.</p>
+                        <p class="service-duration">Duração: 50min</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar a Massagem Relaxante por R$ 130. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="pedras.jpg" alt="Massagem com Pedras Quentes" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Massagem com Pedras Quentes</h3>
+                        <p class="service-price">R$ 140</p>
+                        <p class="service-description"><b>Somente para mulheres</b>: 40min de massagem +10min de pedras quentes.</p>
+                        <p class="service-duration">Duração: 50min</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar a Massagem com Pedras Quentes por R$ 140. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="drenagem.jpg" alt="Drenagem Linfática" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Drenagem Linfática</h3>
+                        <p class="service-price">R$ 160</p>
+                        <p class="service-description"><b>Somente para mulheres</b>: 40min de massagem +10min de drenagem.</p>
+                        <p class="service-duration">Duração: 50min</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar a Drenagem Linfática por R$ 160. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="ventosa.jpg" alt="Aplicação de Ventosa" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Aplicação de Ventosa</h3>
+                        <p class="service-price">R$ 80</p>
+                        <p class="service-description">Aumenta a circulação local, oxigena tecidos e alivia dores musculares intensas.</p>
+                        <p class="service-duration">Duração: 30min</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar a Aplicação de Ventosa por R$ 80. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="labios.jpg" alt="Spa dos Lábios" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Spa dos Lábios</h3>
+                        <p class="service-price">R$ 50</p>
+                        <p class="service-description">Esfoliação delicada e hidratação profunda para lábios macios e livres de ressecamento.</p>
+                        <p class="service-duration">Duração: 20min</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar o Spa dos Lábios por R$ 50. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="pes.jpg" alt="Spa dos Pés" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Spa dos Pés</h3>
+                        <p class="service-price">R$ 85</p>
+                        <p class="service-description">Escalda-pés relaxante com esfoliação e massagem nutritiva para pés cansados e renovados.</p>
+                        <p class="service-duration">Duração: 30min</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar o Spa dos Pés por R$ 85. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="limpeza-simples.jpg" alt="Limpeza de Pele Simples" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Limpeza de Pele Simples</h3>
+                        <p class="service-price">R$ 90</p>
+                        <p class="service-description">Higienização rápida com hidratação facial ideal para manter a saúde diária cutânea.</p>
+                        <p class="service-duration">Duração: 40min</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar a Limpeza de Pele Simples por R$ 90. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="limpeza-profunda.jpg" alt="Limpeza de Pele Profunda" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Limpeza de Pele Profunda</h3>
+                        <p class="service-price">R$ 140</p>
+                        <p class="service-description">Remoção de impurezas, cravos e células mortas, devolvendo o brilho natural à pele.</p>
+                        <p class="service-duration">Duração: 1h20</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar a Limpeza de Pele Profunda (1h20) por R$ 140. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+	<section class="services-section">
+        
+        <div class="services-group">
+            <h2 class="section-title">Mais Agendados</h2>
+            <div class="services-slider">
+                
+                <div class="service-card">
+                    <img src="relaxante.jpg" alt="Massagem Relaxante" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Massagem Relaxante</h3>
+                        <p class="service-price">R$ 130</p>
+                        <p class="service-description"><b>Somente para mulheres</b>: 40min de massagem +10min de ventosa.</p>
+                        <p class="service-duration">Duração: 50min</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar a Massagem Relaxante por R$ 130. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="pedras.jpg" alt="Massagem com Pedras Quentes" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Massagem com Pedras Quentes</h3>
+                        <p class="service-price">R$ 140</p>
+                        <p class="service-description"><b>Somente para mulheres</b>: 40min de massagem +10min de pedra quente.</p>
+                        <p class="service-duration">Duração: 50min</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar a Massagem com Pedras Quentes por R$ 140. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="limpeza-profunda.jpg" alt="Limpeza de Pele Profunda" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Limpeza de Pele Profunda</h3>
+                        <p class="service-price">R$ 140</p>
+                        <p class="service-description"><b>Somente para mulheres</b>: 40min de massagem +10min de drenagem.</p>
+                        <p class="service-duration">Duração: 50min</p>
+                        <a href="https://wa.me/5516997094208?text=Olá! Gostaria de agendar a Limpeza de Pele Profunda por R$ 140. Qual a disponibilidade de horários?" target="_blank" class="book-btn">Agende Agora</a>
+                    </div>
+							<a href="https://wa.me/5516997094208?text=Olá! Gostaria de tirar uma dúvida sobre os serviços." target="_blank" class="whatsapp-flutuante">
+    <img src="whatsappbm.png" alt="WhatsApp">
+</a>
+
+                </div>
+
+            </div>
+        </div>
+		</section>
+
+    <script src="script.js"></script>
+</body>
+</html>
