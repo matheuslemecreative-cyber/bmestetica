@@ -98,12 +98,12 @@ header {
     font-size: 1.4rem;
     letter-spacing: 1px;
     transition: background 0.3s, color 0.3s;
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .sidebar ul li a:hover {
     background-color: #fbf5f0;
-    color: #ffffff;
+    color: #b08532;
 }
 
 /* Overlay */
@@ -161,7 +161,6 @@ header {
     object-position: center;
 }
 
-/* Indicadores (Bolinhas) - Fora do media query para funcionar globalmente */
 .carousel-indicators {
     position: absolute;
     bottom: 20px;
@@ -186,66 +185,43 @@ header {
     transform: scale(1.2);
 }
 
-/* --- ADAPTAÇÃO COMPLETA PARA CELULAR (TELAS ATÉ 1000PX) --- */
-@media (max-width: 1000px) {
-    .carousel-container {
-        width: 100%; 
-        height: auto; 
-        aspect-ratio: 1000 / 1100; 
-        margin: 20px 0 0 0; 
-        border-radius: 0px; 
-		
-    }
-	
-    .slide {
-        width: 100%; /* Mudado de 100vw para 100% para evitar quebra de largura */
-        height: auto;
-        aspect-ratio: 1000 / 1100;
-    }
-}
-
 /* ==========================================================================
-   --- SEÇÃO DE SERVIÇOS (VERSÃO CORRIGIDA E UNIFICADA) ---
+   --- SEÇÃO DE SERVIÇOS ---
    ========================================================================== */
-
 .services-section {
     max-width: 1000px;
-    margin: 0 auto; /* Centraliza a seção inteira no PC */
+    margin: 0 auto;
     padding: 0;
 }
 
-/* Caixa que segura cada grupo (Mais Agendados / Todos os Serviços) */
 .services-group {
-    width: 100%;
-    margin-top: 50px;    /* Espaço idêntico acima de CADA bloco */
-    margin-bottom: 20px; /* Espaço abaixo de cada bloco */
+    max-width: 1000px;
+    margin: 50px auto 20px auto;
     padding: 0;
+}
 
-/* Título com a barrinha dourada */
 .section-title {
     font-size: 1.8rem;
     color: #4a3e3d;
     margin-top: 0;
     margin-bottom: 20px;
-    margin-left: 20px; /* Alinha perfeitamente com o início dos cards no PC */
+    margin-left: 20px;
     letter-spacing: 1px;
-    border-left: 4px solid #b48f48; /* Barrinha dourada */
-    padding-left: 12px; /* Afasta o texto da barrinha */
+    border-left: 4px solid #b48f48;
+    padding-left: 12px;
 }
 
-/* Área rolável lateralmente */
 .services-slider {
     display: flex;
     gap: 20px;
     overflow-x: auto;
-    padding-left: 20px;  /* Faz o primeiro card alinhar com o título */
-    padding-right: 20px; /* Dá respiro no final da rolagem */
+    padding-left: 20px;  
+    padding-right: 20px; 
     padding-bottom: 20px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
 
-/* Esconde/Suaviza a barra de rolagem */
 .services-slider::-webkit-scrollbar {
     height: 6px;
 }
@@ -261,7 +237,6 @@ header {
     background: #b48f48;
 }
 
-/* CARD RETANGULAR VERTICAL */
 .service-card {
     flex: 0 0 280px; 
     background-color: #ffffff;
@@ -317,11 +292,10 @@ header {
     font-size: 1.15rem;
     color: #a19492;
     margin-bottom: 15px;
-	margin-top: 10px;
-	font-weight: bold;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
-/* BOTÃO AGENDE AGORA */
 .book-btn {
     display: block;
     text-align: center;
@@ -336,101 +310,58 @@ header {
     transition: background-color 0.3s ease;
 }
 
-.book-btn:hover {
-    background-color: #b08532;
+/* ==========================================================================
+   --- SEÇÃO DOS PACOTES ESPECIAIS ---
+   ========================================================================== */
+.packages-container {
+    max-width: 1000px;
+    margin: 50px auto 20px auto;
+    padding: 0;
 }
 
-/* --- ADAPTAÇÃO COMPLETA PARA CELULAR --- */
-@media (max-width: 1000px) {
-    .services-section {
-        margin-top: 20px;
-    }
-
-    .services-group {
-        margin-top: 30px;
-        margin-bottom: 10px;
-    }
-    
-    .section-title {
-        font-size: 2.25rem; 
-        margin-left: 15px; /* Recuo menor adaptado para a tela do celular */
-    }
-
-    .services-slider {
-        padding-left: 15px; /* Alinha o primeiro card com a nova margem do título */
-        padding-right: 15px;
-    }
-    
-    .service-card {
-        flex: 0 0 250px; /* Cards ligeiramente menores no mobile */
-    }
-
-    /* Regras do Carrossel superior mantidas */
-    .carousel-container {
-        width: 100%; 
-        height: auto; 
-        aspect-ratio: 1000 / 1100; 
-        margin: 20px 0 0 0; 
-        border-radius: 0px; 
-    }
-
-    .slide {
-        width: 100%; 
-        height: auto;
-        aspect-ratio: 1000 / 1100;
-    }
+.packages-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cards por linha no PC */
+    gap: 25px;
+    padding: 0 20px;
 }
-/* --- BOTÃO FLUTUANTE DO WHATSAPP --- */
-.whatsapp-flutuante {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999; /* Garante que ele fique por cima de tudo */
+
+.package-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #f5ebe6;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     transition: transform 0.3s ease;
 }
 
-/* Controla a imagem dentro do botão */
-.whatsapp-flutuante img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 50%; /* Mantém redondo se a imagem for quadrada */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-	background-color: #03e251;
+.package-card:hover {
+    transform: translateY(-5px);
 }
 
-/* Efeito de aumentar levemente ao passar o mouse */
-.whatsapp-flutuante:hover {
-    transform: scale(1.1);
+.package-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-/* Ajuste para telas menores (celulares) */
-@media (max-width: 600px) {
-    .whatsapp-flutuante {
-        width: 70px;
-        height: 70px;
-        bottom: 15px;
-        right: 15px;
-    }
-}
-/* Título do Pacote */
 .package-name {
-    font-size: 1.4rem; /* Mesma fonte h3 de Serviços */
+    font-size: 1.4rem;
     color: #4a3e3d;
     margin-bottom: 15px;
     font-weight: bold;
 }
 
-/* Itens Inclusos */
 .inclusions-list {
     list-style: none;
     margin-bottom: 20px;
 }
 
 .inclusions-list li {
-    font-size: 1.05rem; /* Mesma fonte descritiva de Serviços */
+    font-size: 1.05rem;
     line-height: 1.6;
     color: #7a6e6d;
     margin-bottom: 8px;
@@ -444,7 +375,6 @@ header {
     font-size: 0.9rem;
 }
 
-/* Texto de Bônus / Ganha */
 .bonus-text {
     font-size: 1.05rem;
     color: #7a6e6d;
@@ -458,9 +388,8 @@ header {
     font-weight: bold;
 }
 
-/* Seção de Preço */
 .price-box {
-    margin-top: auto; /* Empurra o preço e o botão sempre para o final do card */
+    margin-top: auto; 
     margin-bottom: 20px;
 }
 
@@ -473,22 +402,21 @@ header {
 }
 
 .current-price {
-    font-size: 1.6rem; /* Mesma proporção visual de destaque das outras páginas */
+    font-size: 1.75rem;
     color: #b08532;
     font-weight: bold;
     display: block;
 }
 
-/* Botão de Ação */
 .buy-btn {
     display: block;
     background-color: #b08532;
     color: #ffffff;
     text-decoration: none;
-    padding: 12px;
+    padding: 14px;
     border-radius: 8px;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     text-align: center;
     transition: background-color 0.3s ease;
 }
@@ -497,7 +425,6 @@ header {
     background-color: #916c24;
 }
 
-/* Caixa de Validade */
 .validity-box {
     margin: 30px 20px;
     text-align: left;
@@ -506,39 +433,7 @@ header {
     font-style: italic;
 }
 
-/* --- VERSÃO CELULAR (MOBILE) --- */
-@media (max-width: 1000px) {
-    .about-container {
-        margin: 30px auto;
-    }
 
-    .section-title {
-        font-size: 1.6rem; /* Redução idêntica à do mobile de serviços */
-        margin-left: 15px;
-    }
-
-    .owner-card {
-        flex-direction: column;
-        border-radius: 12px;
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-
-    .owner-image {
-        flex: 0 0 300px;
-    }
-
-    .owner-content {
-        padding: 25px 20px;
-    }
-
-    .values-grid {
-        grid-template-columns: 1fr;
-        padding-left: 15px;
-        padding-right: 15px;
-        gap: 25px;
-    }
-}
 /* --- BOTÃO FLUTUANTE DO WHATSAPP --- */
 .whatsapp-flutuante {
     position: fixed;
@@ -546,26 +441,91 @@ header {
     height: 60px;
     bottom: 20px;
     right: 20px;
-    z-index: 999; /* Garante que ele fique por cima de tudo */
+    z-index: 999;
     transition: transform 0.3s ease;
 }
 
-/* Controla a imagem dentro do botão */
 .whatsapp-flutuante img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: 50%; /* Mantém redondo se a imagem for quadrada */
+    border-radius: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-	background-color: #03e251;
+    background-color: #03e251;
 }
 
-/* Efeito de aumentar levemente ao passar o mouse */
 .whatsapp-flutuante:hover {
     transform: scale(1.1);
 }
 
-/* Ajuste para telas menores (celulares) */
+/* ==========================================================================
+   --- ADAPTAÇÃO COMPLETA PARA CELULAR (RESPONSIVIDADE) ---
+   ========================================================================== */
+@media (max-width: 1000px) {
+    .carousel-container {
+        width: 100%; 
+        height: auto; 
+        aspect-ratio: 1000 / 1100; 
+        margin: 20px 0 0 0; 
+        border-radius: 0px; 
+    }
+    
+    .slide {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1000 / 1100;
+    }
+
+    .services-section {
+        margin-top: 20px;
+    }
+
+    .services-group {
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    
+    .section-title {
+        font-size: 2.25rem; 
+        margin-left: 15px;
+    }
+
+    .services-slider {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .service-card {
+        flex: 0 0 250px;
+    }
+
+    /* Pacotes no Mobile */
+    .packages-container {
+        margin-top: 40px;
+    }
+
+    .packages-grid {
+        grid-template-columns: 1fr; /* Transforma em 1 coluna (um embaixo do outro) */
+        padding-left: 15px;
+        padding-right: 15px;
+        gap: 20px;
+    }
+
+    .package-content {
+        padding: 20px;
+    }
+
+    .package-name {
+        font-size: 1.5rem;
+    }
+
+    .validity-box {
+        margin: 20px 15px;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+}
+
 @media (max-width: 600px) {
     .whatsapp-flutuante {
         width: 70px;
@@ -573,35 +533,4 @@ header {
         bottom: 15px;
         right: 15px;
     }
-
-/* --- VERSÃO TOTALMENTE CORRIGIDA PARA CELULAR (MOBILE) --- */
-@media (max-width: 1000px) {
-    .packages-container {
-        margin: 30px auto;
-    }
-
-    .section-title {
-        font-size: 1.6rem;
-        margin-left: 15px;
-    }
-
-    .packages-grid {
-        grid-template-columns: 1fr; /* Um card embaixo do outro */
-        padding-left: 15px;
-        padding-right: 15px;
-        gap: 20px;
-    }
-
-    .package-content {
-        padding: 20px; /* Reduz margens internas no mobile */
-    }
-
-    .package-name {
-        font-size: 1.3rem;
-    }
-
-    .validity-box {
-        margin: 20px 15px;
-        font-size: 1.1rem;
-		text-align: center;
-    }
+}
