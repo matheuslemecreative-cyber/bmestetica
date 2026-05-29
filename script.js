@@ -21,7 +21,7 @@ menuLinks.forEach(link => {
 
 
 // ==========================================================================
-// --- 2. LÓGICA DO CARROSSEL (AUTOMÁTICO + ARRASTAR MOBILE) ---
+// --- 2. LÓGICA DO CARROSSEL (AUTOMÁTICO + ARRASTAR MOBILE COM LINKS) ---
 // ==========================================================================
 const track = document.getElementById('track');
 const dots = document.querySelectorAll('.dot');
@@ -34,6 +34,7 @@ let autoSlide = setInterval(nextSlide, slideInterval);
 
 let startX = 0;
 let isDragging = false;
+let moved = false; // Nova variável para detectar se houve arrasto real
 
 function updateCarousel() {
     track.style.transform = `translateX(-${currentIndex * (100 / totalSlides)}%)`;
@@ -68,16 +69,16 @@ function resetInterval() {
     autoSlide = setInterval(nextSlide, slideInterval);
 }
 
-// Funções de Arrastar (Swipe) corrigidas para não bloquear cliques externos
+// Modificado para capturar o clique/toque inicial nos banners
 function dragStart(e) {
-    // Se o toque acontecer no botão flutuante do WhatsApp, ignora o arrasto do carrossel
     if (e.target.closest('.whatsapp-flutuante')) {
         return;
     }
     
     isDragging = true;
+    moved = false; // Reseta o estado de movimento a cada novo toque
     startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-    clearInterval(autoSlide); // Pausa o tempo enquanto arrasta
+    clearInterval(autoSlide);
 }
 
 function dragEnd(e) {
@@ -87,15 +88,27 @@ function dragEnd(e) {
     const endX = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].clientX;
     const diffX = startX - endX;
 
-    // Só passa o slide se o arrasto for maior que 50 pixels (evita cliques fantasmas)
-    if (diffX > 50) {
-        nextSlide();
-    } else if (diffX < -50) {
-        prevSlide();
+    // Só considera como arrasto de slide se passar de 50 pixels
+    if (Math.abs(diffX) > 50) {
+        moved = true; // Sinaliza que o usuário teve a intenção de arrastar, não de clicar
+        if (diffX > 50) {
+            nextSlide();
+        } else if (diffX < -50) {
+            prevSlide();
+        }
     }
     
-    resetInterval(); // Retoma o carrossel automático
+    resetInterval();
 }
+
+// Bloqueia o redirecionamento do link se a pessoa tentou arrastar o banner
+container.querySelectorAll('.slide a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        if (moved) {
+            e.preventDefault();
+        }
+    });
+});
 
 // Eventos de toque e mouse para o carrossel
 container.addEventListener('touchstart', dragStart, { passive: true });
@@ -116,7 +129,6 @@ sliders.forEach(slider => {
     let scrollLeft;
 
     slider.addEventListener('mousedown', (e) => {
-        // Ignora o arrasto do slider se o clique for direto no botão de agendar
         if (e.target.closest('.book-btn')) return;
         
         isDown = true;
@@ -139,7 +151,7 @@ sliders.forEach(slider => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 2; // Multiplicador de velocidade de arrasto
+        const walk = (x - startX) * 2; 
         slider.scrollLeft = scrollLeft - walk;
     });
 });
